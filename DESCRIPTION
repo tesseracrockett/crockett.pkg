@@ -13,7 +13,7 @@ Imports:
 Suggests:
     knitr,
     testthat,
-    asserthat,
+    assertthat,
     rmarkdown,
     Biostrings,
     covr

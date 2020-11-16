@@ -2,4 +2,4 @@
 
 export(calc_finalheight_diff)
 export(calc_rootshoot_ratio)
-importFrom(asssertthat,assert_that)
+importFrom(assertthat,assert_that)

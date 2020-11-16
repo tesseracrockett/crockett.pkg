@@ -4,7 +4,7 @@
 #'@param HEIGHT_F final height of plant in cm (numeric, no default)
 #'@param HEIGHT_I initial height of plant in cm (numeric, no default)
 #'@return difference (numeric)
-#'@importFrom assertthat assert_that 
+#'@importFrom assertthat assert_that
 #'@export
 #'
 #'@examples 

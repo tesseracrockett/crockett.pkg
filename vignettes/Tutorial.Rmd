@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 How do you install r pkg? 
 Syntax for installing pkgs looks like 
 
-```{r, eval=FALSE}
+```{r}
 devtools::install_github("tesseracrockett/crockett.pkg")
 ```   
 next thing, remind people to load ppkg
