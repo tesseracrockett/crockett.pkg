@@ -4,6 +4,7 @@
 #'@param BELOWGROUND weight of BELOWGROUND biomass in grams (numeric, no default)
 #'@param ABOVE_GROUND weight of the ABOVE_GROUND biomass in grams (numeric, no default)
 #'@return ratio (numeric)
+#'@export
 #'
 #'@examples 
 #'calc_root_shoot_ratio (BELOWGROUND/ABOVE_GROUND)
