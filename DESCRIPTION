@@ -1,0 +1,22 @@
+Package: crockett.package
+Type: Package
+Title: Ecotox data analysis
+Version: 0.1.0
+Authors@R: person("Tess", "Crockett", role = c("aut", "cre"),
+	email = "tessera.crockett@selu.edu")
+Description: Calculates root/shoot ratio, calculates change in plant height
+License: MIT + file LICENSE
+Depends:
+	R (>= 3.0.0)
+Imports:
+    tidyverse
+Suggests:
+    knitr,
+    testthat,
+    asserthat,
+    rmarkdown,
+    Biostrings,
+    covr
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
