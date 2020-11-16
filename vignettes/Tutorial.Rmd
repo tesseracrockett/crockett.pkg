@@ -1,0 +1,28 @@
+---
+title: "Tutorial"
+author: "Tessera Crockett"
+date: "11/16/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+How do you install r pkg? 
+Syntax for installing pkgs looks like 
+
+```{r}
+devtools::install_github("tesseracrockett/crockett.pkg")
+```   
+next thing, remind people to load ppkg
+```{r}
+library(crockett.pkg)
+```
+
+## Determining root/shoot ratio for plant biomass
+
+Alone, above_ground or belowground biomass are not particularly informative of what a given plant may have experienced during it's growth season, however root to shoot ratio, a ratio (belowground/above_ground) that includes both pieces of plant growth information. Having a function to compute this ratio into a new column that can then be analyzed helps prevent errors in hand calculations and provides this information quickly. The expected inputs are the above_ground and belowground biomass weights, in grams. The expected output is a new column that has calculated the root to shoot ratio for each sample. 
+
+```{r}
+ecotox <- 
