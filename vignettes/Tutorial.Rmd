@@ -17,7 +17,7 @@ devtools::install_github("tesseracrockett/crockett.pkg")
 ```   
 next thing, remind people to load ppkg
 ```{r}
-library(crockett.pkg)
+library(crockett.package)
 ```
 
 ## Determining root/shoot ratio for plant biomass

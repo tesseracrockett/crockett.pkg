@@ -4,7 +4,7 @@
 #'@param BELOWGROUND weight of BELOWGROUND biomass in grams (numeric, no default)
 #'@param ABOVE_GROUND weight of the ABOVE_GROUND biomass in grams (numeric, no default)
 #'@return ratio (numeric)
-#'@importFrom tidyverse tidyverse
+#'@importFrom dplyr mutate
 #'@importFrom magrittr "%>%"
 #'@export
 #'

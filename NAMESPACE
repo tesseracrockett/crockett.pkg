@@ -3,5 +3,5 @@
 export(calc_finalheight_diff)
 export(calc_rootshoot_ratio)
 importFrom(assertthat,assert_that)
+importFrom(dplyr,mutate)
 importFrom(magrittr,"%>%")
-importFrom(tidyverse,tidyverse)
