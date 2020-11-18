@@ -48,10 +48,17 @@ Let's take a look at the next function in this package.
 Our raw data provides us with the initial and final height of the plant, however in order to better analyze our data and compare to other information such as biomass, we need to determine the difference in plant height from initial to final height measurements taken. Running this function helps prevent errors in hand calculations or calculations by rows. 
 The expected inputs are specific to the tibble (dataframe) "ecotox" and include the "HEIGHT_I" and "HEIGHT_F" columns, which are both reported in centimeters. The expected output is a new column titled "fh_diff" which has calculated the difference in the intial and final height of the plant in centimeters. 
 
-Now, since our data frame is loaded in and saved with the column generated from our previous function, let's run our second function, and save this as well to our tibble "ecotox". 
+Now, let's first load our tibble back in and then processs our second function.
 
 ```{r}
-ecotox <- calc_finalheight_diff(data = ecotox, HEIGHT_F = ecotox$HEIGHT_F, HEIGHT_I = ecotox$HEIGHT_F)
+ecotox <- read_csv("../inst/extdata/ecotox.csv")
+calc_finalheight_diff(data = ecotox, HEIGHT_F = ecotox$HEIGHT_F, HEIGHT_I = ecotox$HEIGHT_I)
+```
+
+As with our first function, we want to make sure we overwrite our tibble with the updated version that includes our 2nd new column. 
+
+```{r}
+ecotox <-calc_finalheight_diff(data = ecotox, HEIGHT_F = ecotox$HEIGHT_F, HEIGHT_I = ecotox$HEIGHT_I)
 view(ecotox)
 ```
 
