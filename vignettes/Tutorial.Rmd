@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 How do you install r pkg? 
 Syntax for installing pkgs looks like 
 
-```{r}
+```{r, eval=FALSE}
 devtools::install_github("tesseracrockett/crockett.pkg")
 ```   
 next thing, remind people to load ppkg
@@ -22,11 +22,41 @@ library(crockett.pkg)
 
 ## Determining root/shoot ratio for plant biomass
 
-Alone, above_ground or belowground biomass are not particularly informative of what a given plant may have experienced during it's growth season, however root to shoot ratio, a ratio (belowground/above_ground) that includes both pieces of plant growth information. Having a function to compute this ratio into a new column that can then be analyzed helps prevent errors in hand calculations and provides this information quickly. The expected inputs are the above_ground and belowground biomass weights, in grams. The expected output is a new column that has calculated the root to shoot ratio for each sample. 
+Alone, above_ground or belowground biomass are not particularly reflective of what a given plant may have experienced during it's growth season, however root to shoot ratio, a ratio (belowground/above_ground) that includes both pieces of plant growth information, can be very informative. Having a function to compute this ratio into a new column that can then be analyzed helps prevent errors typically found in hand calculations and provides this information quickly. 
+The expected inputs are specific to the tibble (dataframe) "ecotox" and are the above_ground and belowground columns, which is biomass weight in grams. The expected output is a new column that has calculated the root to shoot ratio for each sample, the closer to 1, the closer the plant was to having equal roots to shoots.  
 
+Now lets load in the data frame and run this function. 
 ```{r}
 library(tidyverse)
 ecotox <- read_csv("../inst/extdata/ecotox.csv")
-calc_rootshoot_ratio(ecotox)
+calc_rootshoot_ratio(data = ecotox, BELOWGROUND = ecotox$BELOWGROUND, ABOVE_GROUND = ecotox$ABOVE_GROUND)
 
 ```
+
+Next, lets makes sure to save our updated tibble and view it to confirm the presence of the new root/shoot ratio column, as we will need this later.
+
+
+```{r}
+ecotox <- calc_rootshoot_ratio(data = ecotox, BELOWGROUND = ecotox$BELOWGROUND, ABOVE_GROUND = ecotox$ABOVE_GROUND)
+view(ecotox)
+```
+
+Let's take a look at the next function in this package.
+
+## Determining total vertical growth in plant samples
+
+Our raw data provides us with the initial and final height of the plant, however in order to better analyze our data and compare to other information such as biomass, we need to determine the difference in plant height from initial to final height measurements taken. Running this function helps prevent errors in hand calculations or calculations by rows. 
+The expected inputs are specific to the tibble (dataframe) "ecotox" and include the "HEIGHT_I" and "HEIGHT_F" columns, which are both reported in centimeters. The expected output is a new column titled "fh_diff" which has calculated the difference in the intial and final height of the plant in centimeters. 
+
+Now, since our data frame is loaded in and saved with the column generated from our previous function, let's run our second function, and save this as well to our tibble "ecotox". 
+
+```{r}
+ecotox <- calc_finalheight_diff(data = ecotox, HEIGHT_F = ecotox$HEIGHT_F, HEIGHT_I = ecotox$HEIGHT_F)
+view(ecotox)
+```
+
+Next, let's take a look at our final function.
+
+## Generating a 
+
+

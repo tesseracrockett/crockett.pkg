@@ -24,6 +24,6 @@ ratio (numeric)
 Calculate root/shoot ratio into new column
 }
 \examples{
-calc_root_shoot_ratio (BELOWGROUND/ABOVE_GROUND)
+calc_rootshoot_ratio (BELOWGROUND/ABOVE_GROUND)
 
 }

@@ -1,6 +1,6 @@
 Package: crockett.package
 Type: Package
-Title: Ecotox data analysis
+Title: Ecotox plant data analysis
 Version: 0.1.0
 Authors@R: person("Tess", "Crockett", role = c("aut", "cre"),
 	email = "tessera.crockett@selu.edu")
