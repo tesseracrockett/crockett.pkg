@@ -5,7 +5,7 @@
 #'@param HEIGHT_I initial height of plant in cm (numeric, no default)
 #'@return difference (numeric)
 #'@importFrom assertthat assert_that
-#'@importFrom tidyverse
+#'@importFrom tidyverse tidyverse
 #'@importFrom magrittr "%>%"
 #'@export
 #'
