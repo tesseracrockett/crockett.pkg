@@ -9,13 +9,16 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-How do you install r pkg? 
-Syntax for installing pkgs looks like 
+Today we will be installing an R package that will help us process and prepare raw data to be analyzed. This data is resulting from an experiment on the wetland plant _Juncus effusus_, looking at the response to differing doses of ammonium. 
+The goal of this package is to help us create useful biomass and height increase information based on this raw data, and then analyze the two to see if plant height increase can predict biomass increase. 
+First lets install the package from github using the below code.
 
 ```{r, eval=FALSE}
 devtools::install_github("tesseracrockett/crockett.pkg")
 ```   
-next thing, remind people to load ppkg
+
+Before we look at each function, make sure to load the package into your local or studio version of R.
+
 ```{r}
 library(crockett.package)
 ```
