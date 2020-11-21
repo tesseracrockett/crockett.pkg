@@ -2,6 +2,8 @@
 
 export(calc_finalheight_diff)
 export(calc_rootshoot_ratio)
+export(ecotox_lin_reg)
 importFrom(assertthat,assert_that)
 importFrom(dplyr,mutate)
+importFrom(ggplot2,geom_smooth)
 importFrom(magrittr,"%>%")

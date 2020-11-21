@@ -18,7 +18,7 @@ calc_rootshoot_ratio(
 \item{ecotox}{name of tibble 'ecotox' (tibble, no default)}
 }
 \value{
-ratio (numeric)
+rs_ratio (numeric)
 }
 \description{
 Calculate root/shoot ratio into new column

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate root/shoot ratio into new column — calc_rootshoot_ratio • crockett.package</title>
+<title>Create visualization - linear regression — ecotox_lin_reg • crockett.package</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Calculate root/shoot ratio into new column — calc_rootshoot_ratio" />
-<meta property="og:description" content="Calculate root/shoot ratio into new column" />
+<meta property="og:title" content="Create visualization - linear regression — ecotox_lin_reg" />
+<meta property="og:description" content="Create visualization - linear regression" />
 
 
 
@@ -115,31 +115,37 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate root/shoot ratio into new column</h1>
+    <h1>Create visualization - linear regression</h1>
     
-    <div class="hidden name"><code>calc_rootshoot_ratio.Rd</code></div>
+    <div class="hidden name"><code>ecotox_lin_reg.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Calculate root/shoot ratio into new column</p>
+    <p>Create visualization - linear regression</p>
     </div>
 
-    <pre class="usage"><span class='fu'>calc_rootshoot_ratio</span><span class='op'>(</span>
+    <pre class="usage"><span class='fu'>ecotox_lin_reg</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>ecotox</span>,
-  BELOWGROUND <span class='op'>=</span> <span class='va'>ecotox</span><span class='op'>$</span><span class='va'>BELOWGROUND</span>,
-  ABOVE_GROUND <span class='op'>=</span> <span class='va'>ecotox</span><span class='op'>$</span><span class='va'>ABOVE_GROUND</span>
+  rs_ratio <span class='op'>=</span> <span class='va'>ecotox</span><span class='op'>$</span><span class='va'>rs_ratio</span>,
+  fh_diff <span class='op'>=</span> <span class='va'>ecotox</span><span class='op'>$</span><span class='va'>fh_diff</span>,
+  DOSE <span class='op'>=</span> <span class='va'>ecotox</span><span class='op'>$</span><span class='va'>DOSE</span>,
+  lm <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>rs_ratio</span> <span class='op'>~</span> <span class='va'>fh_diff</span>, <span class='va'>ecotox</span><span class='op'>)</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>BELOWGROUND</th>
-      <td><p>weight of BELOWGROUND biomass in grams (numeric, no default)</p></td>
+      <th>rs_ratio</th>
+      <td><p>ratio of root (belowground biomass) to shoot (above-ground biomass)(numeric, no default)</p></td>
     </tr>
     <tr>
-      <th>ABOVE_GROUND</th>
-      <td><p>weight of the ABOVE_GROUND biomass in grams (numeric, no default)</p></td>
+      <th>fh_diff</th>
+      <td><p>heightchange of plant in cm (numeric, no default)</p></td>
+    </tr>
+    <tr>
+      <th>DOSE</th>
+      <td><p>dose of ammonium in ppm (numeric, no default)</p></td>
     </tr>
     <tr>
       <th>ecotox</th>
@@ -149,12 +155,8 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>rs_ratio (numeric)</p>
+    <p>linear_regression (graph)</p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>calc_rootshoot_ratio</span> <span class='op'>(</span><span class='va'>BELOWGROUND</span><span class='op'>/</span><span class='va'>ABOVE_GROUND</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in mutate(., rs_ratio = (ecotox$BELOWGROUND/ecotox$ABOVE_GROUND)): object 'BELOWGROUND' not found</span></div><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

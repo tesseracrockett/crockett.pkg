@@ -13,7 +13,7 @@ Today we will be installing an R package that will help us process and prepare r
 The goal of this package is to help us create useful biomass and height increase information based on this raw data, and then analyze the two to see if plant height increase can predict biomass increase. 
 First lets install the package from github using the below code.
 
-```{r, eval=FALSE}
+```{r}
 devtools::install_github("tesseracrockett/crockett.pkg")
 ```   
 
@@ -33,7 +33,7 @@ Now lets load in the data frame and run this function.
 library(tidyverse)
 ecotox <- read_csv("../inst/extdata/ecotox.csv")
 calc_rootshoot_ratio(data = ecotox, BELOWGROUND = ecotox$BELOWGROUND, ABOVE_GROUND = ecotox$ABOVE_GROUND)
-
+ecotox <- calc_rootshoot_ratio(data = ecotox, BELOWGROUND = ecotox$BELOWGROUND, ABOVE_GROUND = ecotox$ABOVE_GROUND)
 ```
 
 You should be seeing our tibble "ecotox" with the new column "rs_ratio".
@@ -52,6 +52,7 @@ Now, let's process our second function.
 ```{r}
 summary(ecotox)
 calc_finalheight_diff(data = ecotox, HEIGHT_F = ecotox$HEIGHT_F, HEIGHT_I = ecotox$HEIGHT_I)
+ecotox <- calc_finalheight_diff(data = ecotox, HEIGHT_F = ecotox$HEIGHT_F, HEIGHT_I = ecotox$HEIGHT_I)
 ```
 You should see first a summary of our tibble with our "rs_ratio" column, and secondly our tibble with our new column "fh_diff".
 
@@ -64,8 +65,8 @@ When working with plant data, it is helpful to see if there are visual cues (suc
 
 ```{r}
 summary(ecotox)
-ecotox_lin_reg(data = ecotox,rs_ratio = ecotox$rs_ratio,
+ecotox_lin_reg(data = ecotox, rs_ratio = ecotox$rs_ratio,
                                   fh_diff = ecotox$fh_diff,
-                                  DOSE = ecotox$DOSE)
+                                  DOSE = ecotox$DOSE, lm = lm(rs_ratio~fh_diff, ecotox))
 ```
 As we see here, the model does fit when the plant samples receive no nutrient; plant height is a predictor of root to shoot ratio. However as plant samples receive differing doses of 2, 20, and 200 ppm ammonium, it becomes clear that plant height increase is a not an accurate or reliable predictor of root to shoot ratio. This can also be seen by our R value, which tells us that only about 46% of the root to shoot ratio of a plant sample is explained by plant height increase; there is a relationship here, but it is not very strong. Further analysis of this data should include an ANOVA. 

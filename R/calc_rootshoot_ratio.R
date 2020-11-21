@@ -3,7 +3,7 @@
 #'@param ecotox name of tibble 'ecotox' (tibble, no default)
 #'@param BELOWGROUND weight of BELOWGROUND biomass in grams (numeric, no default)
 #'@param ABOVE_GROUND weight of the ABOVE_GROUND biomass in grams (numeric, no default)
-#'@return ratio (numeric)
+#'@return rs_ratio (numeric)
 #'@importFrom dplyr mutate
 #'@importFrom magrittr "%>%"
 #'@export
