@@ -36,37 +36,36 @@ calc_rootshoot_ratio(data = ecotox, BELOWGROUND = ecotox$BELOWGROUND, ABOVE_GROU
 
 ```
 
-Next, lets makes sure to save our updated tibble and view it to confirm the presence of the new root/shoot ratio column, as we will need this later.
+You should be seeing our tibble "ecotox" with the new column "rs_ratio".
 
 
-```{r}
-ecotox <- calc_rootshoot_ratio(data = ecotox, BELOWGROUND = ecotox$BELOWGROUND, ABOVE_GROUND = ecotox$ABOVE_GROUND)
-view(ecotox)
-```
 
 Let's take a look at the next function in this package.
 
 ## Determining total vertical growth in plant samples
 
 Our raw data provides us with the initial and final height of the plant, however in order to better analyze our data and compare to other information such as biomass, we need to determine the difference in plant height from initial to final height measurements taken. Running this function helps prevent errors in hand calculations or calculations by rows. 
-The expected inputs are specific to the tibble (dataframe) "ecotox" and include the "HEIGHT_I" and "HEIGHT_F" columns, which are both reported in centimeters. The expected output is a new column titled "fh_diff" which has calculated the difference in the intial and final height of the plant in centimeters. 
+The expected inputs are specific to the tibble (dataframe) "ecotox" and include the "HEIGHT_I" and "HEIGHT_F" columns, which are both reported in centimeters. Programmed in this function is a test to make sure that the data provided from the height columns are indeed numerical (no blanks or alphabetical entries). The expected output is a new column titled "fh_diff" which has calculated the difference in the initial and final height of the plant, in centimeters. 
 
-Now, let's first load our tibble back in and then processs our second function.
+Now, let's process our second function.
 
 ```{r}
-ecotox <- read_csv("../inst/extdata/ecotox.csv")
+summary(ecotox)
 calc_finalheight_diff(data = ecotox, HEIGHT_F = ecotox$HEIGHT_F, HEIGHT_I = ecotox$HEIGHT_I)
 ```
+You should see first a summary of our tibble with our "rs_ratio" column, and secondly our tibble with our new column "fh_diff".
 
-As with our first function, we want to make sure we overwrite our tibble with the updated version that includes our 2nd new column. 
-
-```{r}
-ecotox <-calc_finalheight_diff(data = ecotox, HEIGHT_F = ecotox$HEIGHT_F, HEIGHT_I = ecotox$HEIGHT_I)
-view(ecotox)
-```
 
 Next, let's take a look at our final function.
 
-## Generating a 
+## Generating a linear regression to see if plant height predicts root/shoot ratio across dose
 
+When working with plant data, it is helpful to see if there are visual cues (such as growth, leaf or shoot health, etc...) that can predict and inform us further about the plant. Here we look at plant height increase as a predictor for the root/shoot ratio, i.e. total biomass ratio, across the dose of ammonium received by samples. This analysis is a great visual for those that are unfamiliar with plant processes in general, especially in relation to nutrient dosing. Let us see if we fit the right model. 
 
+```{r}
+summary(ecotox)
+ecotox_lin_reg(data = ecotox,rs_ratio = ecotox$rs_ratio,
+                                  fh_diff = ecotox$fh_diff,
+                                  DOSE = ecotox$DOSE)
+```
+As we see here, the model does fit when the plant samples receive no nutrient; plant height is a predictor of root to shoot ratio. However as plant samples receive differing doses of 2, 20, and 200 ppm ammonium, it becomes clear that plant height increase is a not an accurate or reliable predictor of root to shoot ratio. This can also be seen by our R value, which tells us that only about 46% of the root to shoot ratio of a plant sample is explained by plant height increase; there is a relationship here, but it is not very strong. Further analysis of this data should include an ANOVA. 
